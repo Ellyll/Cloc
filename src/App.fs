@@ -17,7 +17,7 @@ let rec render (ctx: CanvasRenderingContext2D) =
     ctx.strokeStyle <- !^"white"
     ctx.fillStyle <- !^"white"
     ctx.clearRect(0.,0.,ctx.canvas.width, ctx.canvas.height)
-    let clockRadius = ((min ctx.canvas.height ctx.canvas.width) / 2.0)
+    let clockRadius = ((min ctx.canvas.height ctx.canvas.width) / 2.0) - 5.0
     let angleOffset = -System.Math.PI / 2.
     let cx = ctx.canvas.width / 2.
     let cy = ctx.canvas.height / 2.
