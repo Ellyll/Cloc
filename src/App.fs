@@ -13,9 +13,6 @@ let maximiseCanvas (canvas: HTMLCanvasElement) =
     canvas.width <- maxX
     canvas.height <- maxY
 
-maximiseCanvas canvas
-
-
 let rec render (ctx: CanvasRenderingContext2D) =
     ctx.strokeStyle <- !^"white"
     ctx.fillStyle <- !^"white"
@@ -101,7 +98,9 @@ let rec render (ctx: CanvasRenderingContext2D) =
 
     window.requestAnimationFrame (fun _ -> render ctx) |> ignore
 
+// Maximise canvas size to window size, add event listener to do it every time window is resized
+maximiseCanvas canvas
+window.addEventListener("resize", fun _ -> maximiseCanvas canvas)
 
-window.requestAnimationFrame(fun _ ->
-    render context
-    ) |> ignore
+// Begin animating
+window.requestAnimationFrame(fun _ -> render context) |> ignore
