@@ -76,8 +76,16 @@ let rec render (ctx: CanvasRenderingContext2D) =
     let second = now.Second
 
     // Hands
-    let hourAngle = angleOffset + (((2.*System.Math.PI)/12.) * float (if hour <= 12 then hour else hour - 12))
-    let minuteAngle = angleOffset + (((2.*System.Math.PI)/60.) * float minute)
+    let hourAngle =
+        angleOffset +
+            (((2.*System.Math.PI)/12.) *
+                ((float (if hour <= 12 then hour else hour - 12)) +
+                 ((float minute)/60.)))
+    let minuteAngle =
+        angleOffset +
+            (((2.*System.Math.PI)/60.)
+                * ((float minute) +
+                    ((float second)/60.)))
     let secondAngle = angleOffset + (((2.*System.Math.PI)/60.) * float second)
 
     let minuteRadius = innerRadius - 5.0
